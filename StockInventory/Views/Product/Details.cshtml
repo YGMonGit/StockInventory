@@ -1,0 +1,52 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutLIn.cshtml";
+}
+
+@section one{}
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/user.css" />
+  <title>Sign Up</title>
+</head>
+    <body>
+        <div class="mainBox">
+            <div class="darkFilter"></div>
+                <div class="mainBord">
+                    <h1>Details for @Model.ProductName</h1>
+
+                    <table class="table">
+                        <tr>
+                            <th>Product ID</th>
+                            <td>@Model.ProductId</td>
+                        </tr>
+                        <tr>
+                            <th>Product Name</th>
+                            <td>@Model.ProductName</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>@Model.Description</td>
+                        </tr>
+                        <tr>
+                            <th>Quantity</th>
+                            <td>@Model.Quantity</td>
+                        </tr>
+                        <tr>
+                            <th>Price</th>
+                            <td>@Model.Price</td>
+                        </tr>
+                    </table>
+
+                    <a href="/product/index" class="btn btn-info">Back to main Page</a>
+                </div>
+        </div>
+    </body>
+</html>
+
