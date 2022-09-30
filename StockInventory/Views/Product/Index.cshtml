@@ -1,0 +1,70 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutLIn.cshtml";
+}
+
+@section one{}
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/user.css" />
+  <title>Sign Up</title>
+</head>
+    <body>
+        <div class="mainBox">
+            <div class="darkFilter"></div>
+                <div class="mainBord">
+                    <h1 style="color: white; text-align: center;">Product Detail</h1>
+                    
+                    <div class="text-white">
+                        <a href="/product/create" class="btn btn-outline-success" style="margin-bottom:20px;">Add New Product</a>
+                    </div>
+
+                    <form method="get" asp-action="Index">
+                        <p>
+                            <input type="search" placeholder="Enter product name" value="@ViewData["GetTheData"]" name="ProductSearch" style="width:500px; display:inline;" class="form-control"/>
+                            <input type="submit" value="Search" class="btn btn-primary" />
+                            <a asp-action="Index">Get All Products</a>
+                        </p>
+                    </form>
+                    
+                    <table class="table" style="color: white;">
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Details</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ProductId</td>
+                                <td>@item.ProductName</td>
+                                <td>@item.Description</td>
+                                <td>@item.Quantity</td>
+                                <td>@item.Price</td>
+                                <td>
+                                    <a href="/Product/Details/@item.ProductId" class=" btn btn-outline-info">Details</a>
+                                </td>
+                                <td>
+                                    <a href="/product/edit/@item.ProductId" class=" btn btn-outline-primary">Edit</a>
+                                </td>
+                                <td>
+                                    <a href="/product/delete/@item.ProductId" class=" btn btn-outline-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+        </div>
+    </body>
+</html>
