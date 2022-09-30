@@ -1,0 +1,43 @@
+﻿@model Supplier
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutLIn.cshtml";
+}
+
+@section one{}
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/user.css" />
+  <title>Sign Up</title>
+</head>
+<body>
+  <div class="mainBox">
+      <div class="darkFilter"></div>
+          <div class="mainBord">
+              <form action="/supplier/edit/@Model.SupplierId" method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="companyName">Company Name</label>
+                        <input type="hidden" name="SupplierId" value="@Model.SupplierId" />
+                        <input type="text" class="form-control" id="companyName" name="companyName" placeholder="companyName" value="@Model.CompanyName">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="Phone Number">Phone Number</label>
+                        <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" placeholder="PhoneNumber" value="@Model.PhoneNumber">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-success">Save</button>
+                <a class="btn btn-danger" href="/supplier/index">Cancel</a>
+              </form>
+          </div>
+  </div>
+</body>
+</html>
+
+
