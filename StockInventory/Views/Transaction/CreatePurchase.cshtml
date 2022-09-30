@@ -1,0 +1,51 @@
+﻿@model Transaction
+@{
+    ViewData["Title"] = "CreatePurchase";
+    Layout = "~/Views/Shared/_LayoutLIn.cshtml";
+}
+
+@section one{}
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/user.css" />
+  <title>Sign Up</title>
+</head>
+<body>
+  <div class="mainBox">
+      <div class="darkFilter" style="grid-column: 1/-1"></div>
+          <div class="mainBord" style="grid-column: 2/40">
+              <form action="/Transaction/CreatePurchase" method="post">
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="ProductId" class="formLabel"></label>
+                        <input asp-for="ProductId" class="form-control">
+                        <span asp-validation-for="ProductId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="SupplierId" class="formLabel"></label>
+                        <input asp-for="SupplierId" class="form-control">
+                        <span asp-validation-for="SupplierId" class="text-danger"></span>
+                    </div>
+                 </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="PurchasedQuantity" class="formLabel"></label>
+                        <input asp-for="PurchasedQuantity" class="form-control">
+                        <span asp-validation-for="PurchasedQuantity" class="text-danger"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Create</button>
+                <a class="btn btn-danger" href="/Transaction/index">Cancel</a>
+                </form>
+          </div>
+  </div>
+</body>
+</html>
+
+
+

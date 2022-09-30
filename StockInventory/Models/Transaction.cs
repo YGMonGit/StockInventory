@@ -6,7 +6,7 @@ namespace StockInventory.Models
     public class Transaction
     {
         [Key]
-        public int TransactionId { get; set; }
+        public long TransactionId { get; set; }
         public int PurchasedQuantity { get; set; }
         public int SoldQuantity { get; set; }
         public DateTime? DateOfPurchase { get; set; }

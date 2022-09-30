@@ -93,9 +93,9 @@ namespace StockInventory.Migrations
 
             modelBuilder.Entity("StockInventory.Models.Transaction", b =>
                 {
-                    b.Property<int>("TransactionId")
+                    b.Property<long>("TransactionId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime?>("DateOfPurchase")

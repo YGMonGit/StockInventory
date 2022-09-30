@@ -37,6 +37,10 @@ namespace StockInventory
             services.AddScoped<ProductService>();
             services.AddScoped<IService<Product>, ProductService>();
 
+
+               services.AddScoped<TransactionService>();
+            services.AddScoped<IService<Transaction>, TransactionService>();
+
             services.AddControllersWithViews();
         }
 
