@@ -1,0 +1,63 @@
+﻿@model Transaction
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutLIn.cshtml";
+}
+
+@section one{}
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/user.css" />
+  <title>Sign Up</title>
+</head>
+<body>
+  <div class="mainBox">
+      <div class="darkFilter"></div>
+          <div class="mainBord">
+            <h2>Delete Product</h2>
+            <form action="/Transaction/delete/@Model.TransactionId" method="post">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <label for="ProductName">Product Name</label>
+                        </td>
+                        <td>
+                            <input type="hidden" name="TransactionID" value="@Model.TransactionId" />
+                            @Model.Product.ProductName
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="Purchase">Purchased Quantity</label>
+                        </td>
+                        <td>
+                            @Model.PurchasedQuantity
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="Purchase">Sold Quantity</label>
+                        </td>
+                        <td>
+                            @Model.SoldQuantity
+                        </td>
+                    </tr>
+                </table>
+
+                <div>Are you sure to delete this Transaction?</div>
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a class="btn btn-warning" href="/Transaction/index">Cancel</a>
+            </form>
+          </div>
+  </div>
+</body>
+</html>
+
+
+

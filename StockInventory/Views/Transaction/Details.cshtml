@@ -1,0 +1,56 @@
+﻿@model Transaction
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutLIn.cshtml";
+}
+
+@section one{}
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/user.css" />
+  <title>Sign Up</title>
+</head>
+    <body>
+        <div class="mainBox">
+            <div class="darkFilter"></div>
+                <div class="mainBord" style="color:white;">
+                    <h1>Details for @Model.Product.ProductName</h1>
+
+                    <table class="table" style="color:white;">
+                        <tr>
+                            <th>Transaction ID</th>
+                            <td>@Model.TransactionId</td>
+                        </tr>
+                        <tr>
+                            <th>Product Name</th>
+                            <td>@Model.Product.ProductName</td>
+                        </tr>
+                        <tr>
+                            <th>Supplier</th>
+                            <td>@Model.Supplier.CompanyName</td>
+                        </tr>
+                        <tr>
+                            <th>Purchased Quantity</th>
+                            <td>@Model.PurchasedQuantity</td>
+                        </tr>
+                        <tr>
+                            <th>Sold Quantity</th>
+                            <td>@Model.SoldQuantity</td>
+                        </tr>
+                        <tr>
+                            <th>Date</th>
+                            <td>@Model.DateOfPurchase</td>
+                        </tr>
+                    </table>
+
+                    <a href="/Transaction/index" class="btn btn-info">Back to main Page</a>
+                </div>
+        </div>
+    </body>
+</html>
+

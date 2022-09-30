@@ -10,7 +10,7 @@ using StockInventory.Models;
 namespace StockInventory.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220930110228_StockInventoryDatabase")]
+    [Migration("20220930183417_StockInventoryDatabase")]
     partial class StockInventoryDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -95,9 +95,9 @@ namespace StockInventory.Migrations
 
             modelBuilder.Entity("StockInventory.Models.Transaction", b =>
                 {
-                    b.Property<int>("TransactionId")
+                    b.Property<long>("TransactionId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime?>("DateOfPurchase")
