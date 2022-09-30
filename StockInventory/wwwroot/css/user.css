@@ -1,0 +1,54 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar {
+    width: 0;
+}
+
+body {
+    background-image: url("../../Back_1.jpg");
+    min-width: 300px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.mainBox {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(40, 1fr);
+    grid-template-rows: repeat(40, 1fr);
+}
+
+.darkFilter {
+    background-color: black;
+    opacity: 0.7;
+    border-radius: 20px;
+    grid-column: 6/34;
+    grid-row: 4/34;
+}
+
+.formLabel {
+    font-size: 20px;
+    color: white;
+    margin-left: 20px;
+}
+
+.mainBord {
+    overflow: scroll;
+    grid-column: 7/33;
+    grid-row: 5/33;
+    overflow-x: hidden;
+    z-index:2;
+}
+
+@media (max-width: 991px) {
+    .taln {
+        text-align: center;
+        background-color: aquamarine;
+    }
+}

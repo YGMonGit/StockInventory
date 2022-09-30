@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    ViewBag.Message = "Get Started";
+}
+
+@section one{
+    <input type="button" value="@ViewBag.Message" class="btn btn-primary"/>
+}
+
+<style>
+    #try{
+        background-color: transparent;
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(40, 1fr);
+        grid-template-rows: repeat(40, 1fr);
+    }
+    .Inform{
+        background-color:transparent;
+        grid-column: 10/31;
+        grid-row: 15/35;
+        min-width: 450px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    .Inform h1{
+        font-family: Garamond;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+    }
+    .Inform p {
+        font-family: Arial;
+        font-family: 'Times New Roman', Times, serif;
+        font-family: Courier New;
+    }
+</style>
+
+<div class="text-center" id="try">
+    <div class="Inform">
+        <h1>Welcome to SIM</h1>
+        <p>Here we assist you with your Stock Inventory</p>
+        <div id="MoreInfo">
+            <input type="button" value="Learn More" class="btn btn-primary"/>
+            <input type="button" value="Get Started" class="btn" />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model User
+@{
+    ViewData["Title"] = "AccountSetting";
+    Layout = "~/Views/Shared/_LayoutLIn.cshtml";
+}
+@section one{}
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/user.css" />
+  <title>Sign Up</title>
+</head>
+<body>
+  <div class="mainBox">
+      <div class="darkFilter"></div>
+          <div class="mainBord">
+            <div class="form-row">
+                <h1 style = "margin-left:20px; color: white;">Account Setting</h1>
+            </div>
+            <div class="form-row">
+                <a class="btn btn-success" style = "margin-left:30px;" href="/home/index">Update Account</a>
+            </div>
+            <div class="form-row">
+                <a class="btn btn-danger" style = "margin-left:30px; margin-top: 10px;" href="/home/index">Delete Account</a>
+            </div>
+            <div class="form-row">
+                <h1 style = "margin-left:20px; color: white;">Log Out</h1>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <a class="btn btn-danger" style = "margin-left:30px;" href="/home/LogOut">Log Out</a>
+                </div>
+            </div>
+          </div>
+  </div>
+</body>
+</html>
+
+
+

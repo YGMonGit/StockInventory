@@ -1,0 +1,29 @@
+﻿@model User
+@{
+    ViewData["Title"] = "LoggedIn";
+    Layout = "~/Views/Shared/_LayoutLIn.cshtml";
+}
+
+@section one{
+    <a href="/Home/AccountSetting" class="btn btn-primary">@Model.UserName</a>
+}
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/user.css" />
+  <title>Sign Up</title>
+</head>
+<body>
+  <div class="mainBox">
+      <div class="darkFilter"></div>
+          <div class="mainBord">
+              <h1 style="color: white;">Logged In</h1>
+          </div>
+  </div>
+</body>
+</html>
+

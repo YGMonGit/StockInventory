@@ -1,0 +1,39 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Login";
+}
+
+@section one{}
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/user.css" />
+  <title>Sign Up</title>
+</head>
+<body>
+  <div class="mainBox">
+      <div class="darkFilter"></div>
+          <div class="mainBord">
+              <form action="/user/Login" method="post">
+                    <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="username" class="formLabel">Username</label>
+                        <input type="text" id="username_id" name="username" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="password" class="formLabel">Password</label>
+                        <input type="text" id="password_id" name="password" class="form-control">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Login</button>
+                <a class="btn btn-danger" href="/home/index">Cancel</a>
+            </form>
+          </div>
+  </div>
+</body>
+</html>
+
