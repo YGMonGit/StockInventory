@@ -1,0 +1,56 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutLIn.cshtml";
+}
+
+@section one{}
+
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/user.css" />
+  <title>Sign Up</title>
+</head>
+<body>
+  <div class="mainBox">
+      <div class="darkFilter"></div>
+          <div class="mainBord">
+              <form action="/Product/Create" method="post">
+                    <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="ProductName" class="formLabel"></label>
+                        <input asp-for="ProductName" class="form-control">
+                        <span asp-validation-for="ProductName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Description" class="formLabel"></label>
+                        <input asp-for="Description" class="form-control">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Quantity" class="formLabel"></label>
+                        <input asp-for="Quantity" class="form-control">
+                        <span asp-validation-for="Quantity" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Price" class="formLabel"></label>
+                        <input asp-for="Price" class="form-control">
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Create</button>
+                <a class="btn btn-danger" href="/home/index">Cancel</a>
+            </form>
+          </div>
+  </div>
+</body>
+</html>
+
