@@ -5,7 +5,10 @@ using StockInventory.Services;
 using System;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Data;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
+using ClosedXML.Excel;
 
 namespace StockInventory.Controllers
 {
@@ -27,6 +30,7 @@ namespace StockInventory.Controllers
         public IActionResult Index()
         {
             var data = _service.GetAll();
+            
             return View(data);
         }
 
@@ -95,5 +99,50 @@ namespace StockInventory.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public FileResult Export(string ProductSearch)
+        {
+            DataTable dt = new DataTable("Grid");
+            dt.Columns.AddRange(new DataColumn[5] { new DataColumn("Product Id"),
+                                            new DataColumn("Product Name"),
+                                            new DataColumn("Description"),
+                                            new DataColumn("Quantity") ,
+                                            new DataColumn("Price") });
+            var data = _service.GetAll();
+            if (data != null)
+            {
+                if (String.IsNullOrEmpty(ProductSearch) )
+                {
+                    foreach (var item in data)
+                    {
+                        dt.Rows.Add(item.ProductId, item.ProductName, item.Description, item.Quantity , item.Price);
+                    }
+
+                }else
+                {
+                    ViewData["GetTheData"] = ProductSearch;
+                    User loggedInUser = _service3.getLogInUser();
+                    var srcQuery = _context.Products.Where(x => x.User.UserId == loggedInUser.UserId);
+
+                    srcQuery = srcQuery.Where(x => x.ProductName.Contains(ProductSearch));
+                        foreach (var item in srcQuery)
+                        {
+                            dt.Rows.Add(item.ProductId, item.ProductName, item.Description, item.Quantity, item.Price);
+                        }
+                    
+                }
+            }
+          
+
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(dt);
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    wb.SaveAs(stream);
+                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Grid.xlsx");
+                }
+            }
+        }
     }
 }
