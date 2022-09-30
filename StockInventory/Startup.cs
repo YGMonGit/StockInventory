@@ -32,6 +32,9 @@ namespace StockInventory
             services.AddScoped<IService<User>, UserService>();
             services.AddScoped<IService<LoggedIn>, LoggedInService>();
             services.AddScoped<LoggedInService>();
+            services.AddScoped<SupplierService>();
+            services.AddScoped<IService<Supplier>, SupplierService>();
+
             services.AddControllersWithViews();
         }
 
