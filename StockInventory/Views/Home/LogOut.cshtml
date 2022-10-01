@@ -18,11 +18,11 @@
   <div class="mainBox">
       <div class="darkFilter"></div>
           <div class="mainBord">
-            <h2>Delete Product</h2>
+            <h2 style="color: white;">Log Out</h2>
             <form action="/Home/LogOut/@Model.LoggedInId" method="post">
                 <input type="hidden" name="LoggedInId" value="@Model.LoggedInId" />
 
-                <div>Are you sure to log out?</div>
+                <div style="color: white;">Are you sure to log out?</div>
                 <button type="submit" class="btn btn-danger">Log Out</button>
                 <a class="btn btn-warning" href="/home/AccountSetting">Cancel</a>
             </form>
