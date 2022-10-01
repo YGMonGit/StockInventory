@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using StockInventory.ViewModel;
 
 using System.Data;
-using Microsoft.EntityFrameworkCore;
 using System.IO;
 using ClosedXML.Excel;
 
@@ -170,6 +169,7 @@ namespace StockInventory.Controllers
 
 
             if(sorp == 0){
+                data.Price = tran.Price;
                 if (oldval <= newVal){
                     newVal -= oldval;
                     data.Quantity += newVal;
