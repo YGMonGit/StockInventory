@@ -24,14 +24,21 @@
                     <div class="text-white">
                         <a href="/product/create" class="btn btn-outline-success" style="margin-bottom:20px;">Add New Product</a>
                     </div>
-
-                    <form method="get" asp-action="Index">
-                        <p>
-                            <input type="search" placeholder="Enter product name" value="@ViewData["GetTheData"]" name="ProductSearch" style="width:500px; display:inline;" class="form-control"/>
-                            <input type="submit" value="Search" class="btn btn-primary" />
+                    <p>
+                    <form method="get" asp-action="Index" style="margin: 0; padding: 0;">
+                        
+                            <input type="search" placeholder="Enter product name" value="@ViewData["GetTheData"]" name="ProductSearch" style="width:370px; display:inline;" class="form-control"/>
+                            
+                             <input type="submit" value="Search" style="display: inline;" class="btn btn-primary" />
                             <a asp-action="Index">Get All Products</a>
-                        </p>
+                       
                     </form>
+                    <form method="Post" asp-action="Export" style="margin: 0; padding: 0;">
+                   
+                                <input type="submit" value="Export"   style="display: inline;" class="btn btn-primary" />    
+                            
+                      </form>
+                       </p>
                     
                     <table class="table" style="color: white;">
                         <tr>
