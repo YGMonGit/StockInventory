@@ -125,6 +125,7 @@ namespace StockInventory.Controllers
                     var srcQuery = _context.Products.Where(x => x.User.UserId == loggedInUser.UserId);
 
                     srcQuery = srcQuery.Where(x => x.ProductName.Contains(ProductSearch));
+                    
                         foreach (var item in srcQuery)
                         {
                             dt.Rows.Add(item.ProductId, item.ProductName, item.Description, item.Quantity, item.Price);

@@ -8,6 +8,11 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using System.Data;
+using Microsoft.EntityFrameworkCore;
+using System.IO;
+using ClosedXML.Excel;
+
 
 namespace StockInventory.Controllers
 {
