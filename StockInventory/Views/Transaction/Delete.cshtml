@@ -20,9 +20,9 @@
   <div class="mainBox">
       <div class="darkFilter"></div>
           <div class="mainBord">
-            <h2>Delete Product</h2>
+            <h2 style="color: white;">Delete Transaction</h2>
             <form action="/Transaction/delete/@Model.TransactionId" method="post">
-                <table class="table">
+                <table class="table" style="color: white;">
                     <tr>
                         <td>
                             <label for="ProductName">Product Name</label>
@@ -50,7 +50,7 @@
                     </tr>
                 </table>
 
-                <div>Are you sure to delete this Transaction?</div>
+                <div style="color: white;">Are you sure to delete this Transaction?</div>
                 <button type="submit" class="btn btn-danger">Delete</button>
                 <a class="btn btn-warning" href="/Transaction/index">Cancel</a>
             </form>

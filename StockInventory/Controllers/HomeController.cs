@@ -32,10 +32,6 @@ namespace StockInventory.Controllers
             return RedirectToAction("LoggedIn", "Home");
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
         public IActionResult LearnMore()
         {
             return View();
