@@ -24,7 +24,12 @@ namespace StockInventory.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            User loggedInUser = _service.getLogInUser();
+            if (loggedInUser == null)
+            {
+                return View();
+            }
+            return RedirectToAction("LoggedIn", "Home");
         }
 
         public IActionResult Privacy()

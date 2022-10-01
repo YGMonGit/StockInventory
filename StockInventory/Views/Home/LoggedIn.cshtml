@@ -16,12 +16,19 @@
   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="~/css/user.css" />
   <title>Sign Up</title>
+  <style>
+    .mainBord{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+  </style>
 </head>
 <body>
   <div class="mainBox">
       <div class="darkFilter"></div>
           <div class="mainBord">
-              <h1 style="color: white;">Dashboard</h1>
+              <h1 style="color: white;">Welcome, @Model.FirstName @Model.LastName.</h1>
              
           </div>
   </div>
