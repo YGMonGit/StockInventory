@@ -219,12 +219,12 @@ namespace StockInventory.Controllers
         public FileResult Export(string TrasactionSearch)
         {
             DataTable dt = new DataTable("Grid");
-            dt.Columns.AddRange(new DataColumn[5] { new DataColumn("Purchased Quantity"),
-                                          new DataColumn("Date Of Purchase"),
-                                          new DataColumn("Purchased Price"),
+            dt.Columns.AddRange(new DataColumn[6] { new DataColumn("Product Name"),
+                                          new DataColumn("Price"),
+                                          new DataColumn("Purchased Quantity"),
                                             new DataColumn("Sold Quantity"),
-
-                                            new DataColumn(" Date Of Sold") ,
+                                            new DataColumn(" Date ") ,
+                                            new DataColumn(" Supplier ") ,
                                           });
             var data = _service.GetAll();
             if (data != null)
@@ -233,7 +233,7 @@ namespace StockInventory.Controllers
                 {
                     foreach (var item in data)
                     {
-                        dt.Rows.Add(item.PurchasedQuantity, item.DateOfPurchase,  item.SoldQuantity);
+                        dt.Rows.Add(item.Product.ProductName, item.Price,  item.PurchasedQuantity,item.SoldQuantity,item.DateOfPurchase,item.Supplier.CompanyName);
                     }
 
                 }
@@ -249,7 +249,7 @@ namespace StockInventory.Controllers
 
                     foreach (var item in srcQuery)
                     {
-                        dt.Rows.Add(item.PurchasedQuantity, item.DateOfPurchase, item.SoldQuantity);
+                        dt.Rows.Add(item.Product.ProductName, item.Price, item.PurchasedQuantity, item.SoldQuantity, item.DateOfPurchase, item.Supplier.CompanyName);
                     }
 
                 }
