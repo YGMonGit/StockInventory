@@ -55,6 +55,13 @@
                         <span asp-validation-for="DateOfPurchase" class="text-danger"></span>
                     </div>
                 </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Price" class="formLabel"></label>
+                        <input asp-for="Price" class="form-control">
+                        <span asp-validation-for="Price" class="text-danger" placeholder="Price" value="@Model.SupplierId"></span>
+                    </div>
+                </div>
                 <button type="submit" class="btn btn-success">Save</button>
                 <a class="btn btn-danger" href="/Transaction/Index">Cancel</a>
               </form>
