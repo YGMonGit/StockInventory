@@ -220,7 +220,7 @@ namespace StockInventory.Controllers
                 {
                     foreach (var item in data)
                     {
-                        dt.Rows.Add(item.PurchasedQuantity, item.DateOfPurchase, item.purchasedPrice, item.SoldQuantity, item.DateOfSell);
+                        dt.Rows.Add(item.PurchasedQuantity, item.DateOfPurchase,  item.SoldQuantity);
                     }
 
                 }
@@ -236,7 +236,7 @@ namespace StockInventory.Controllers
 
                     foreach (var item in srcQuery)
                     {
-                        dt.Rows.Add(item.PurchasedQuantity, item.DateOfPurchase, item.purchasedPrice, item.SoldQuantity, item.DateOfSell);
+                        dt.Rows.Add(item.PurchasedQuantity, item.DateOfPurchase, item.SoldQuantity);
                     }
 
                 }
