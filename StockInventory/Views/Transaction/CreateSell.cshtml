@@ -1,4 +1,4 @@
-﻿@model Transaction
+﻿@model StockInventory.ViewModel.ProductAndSupplier
 @{
     ViewData["Title"] = "CreateSell";
     Layout = "~/Views/Shared/_LayoutLIn.cshtml";
@@ -14,34 +14,115 @@
   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="~/css/user.css" />
   <title>Sign Up</title>
+  <style>
+    .formInfo{
+        grid-column: 20/34;
+        grid-row: 3/36;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 2;
+    }
+    .wdtFull{
+        width: 100%;
+    }
+
+    .info{
+        display: grid;
+        grid-template-columns: repeat(40, 1fr);
+        grid-template-rows: repeat(40, 1fr);
+        border: 1px solid #aaa;
+        box-shadow: 0 2px 15px #aaa;
+        border-radius: 10px;
+    }
+
+    .productInfo{
+        margin-bottom: 5px;
+    }
+
+    .info > h1{
+        grid-column: 2/40;
+        grid-row: 2/9;
+        color: white;
+    }
+    .info > div{
+        border-top:1px solid #ddd;
+        grid-column: 2/40;
+        grid-row: 12/40;
+        color: white;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    .productInfo{
+        width: 100%;
+        height: 50%;
+    }
+    .supplierInfo{
+        width: 100%;
+        height: 50%;
+    }
+  </style>
 </head>
 <body>
   <div class="mainBox">
-      <div class="darkFilter" style="grid-column: 1/-1"></div>
-          <div class="mainBord" style="grid-column: 2/40">
+      <div class="darkFilter" style="grid-row: 2/37; grid-column: 8/35; box-shadow: 0 2px 15px #666;"></div>
+          <div class="mainBord" style="grid-row:3/36; grid-column: 9/19">
               <form action="/Transaction/CreateSell" method="post">
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label asp-for="ProductId" class="formLabel"></label>
-                        <input asp-for="ProductId" class="form-control">
-                        <span asp-validation-for="ProductId" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label asp-for="SupplierId" class="formLabel"></label>
-                        <input asp-for="SupplierId" class="form-control">
-                        <span asp-validation-for="SupplierId" class="text-danger"></span>
-                    </div>
-                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label asp-for="SoldQuantity" class="formLabel"></label>
-                        <input asp-for="SoldQuantity" class="form-control">
-                        <span asp-validation-for="SoldQuantity" class="text-danger"></span>
-                    </div>
+                <div class="form-group wdtFull">
+                    <label for="ProductId" style="color: white;">Product Id</label>
+                    <input type="text" class="form-control" id="ProductId" name="ProductId" placeholder="Product Id">
+                </div>
+                <div class="form-group wdtFull">
+                    <label for="SupplierId" style="color: white;">Supplier Id</label>
+                    <input type="text" class="form-control" id="SupplierId" name="SupplierId" placeholder="Supplier Id">
+                </div>
+                <div class="form-group wdtFull">
+                    <label for="SoldQuantity" style="color: white;">Sold Quantity</label>
+                    <input type="text" class="form-control" id="SoldQuantity" name="SoldQuantity" placeholder="Sold Quantity">
                 </div>
                 <button type="submit" class="btn btn-success">Create</button>
                 <a class="btn btn-danger" href="/Transaction/index">Cancel</a>
-                </form>
+              </form>
+          </div>
+          <div class="formInfo">
+              <div class="productInfo info">
+                 <h1>Product</h1>
+                 <div>
+                    <table class="table" style="color: white;">
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                        </tr>
+                        @foreach(var item in Model.Prodcut)
+                        {
+                              <tr>
+                                  <td>@item.ProductId</td>
+                                  <td>@item.ProductName</td>
+                              </tr>
+                        }
+                    </table>                 
+                </div>
+              </div>
+              <div class="supplierInfo info">
+                  <h1>Supplier</h1>
+                  <div>
+                      <table class="table" style="color: white;">
+                         <tr>
+                             <th>Product ID</th>
+                             <th>Product Name</th>
+                         </tr>
+                         @foreach(var item in Model.Supplier)
+                         {
+                               <tr>
+                                   <td>@item.SupplierId</td>
+                                   <td>@item.CompanyName</td>
+                               </tr>  
+                         }
+                     </table> 
+                 </div>
+              </div>
           </div>
   </div>
 </body>

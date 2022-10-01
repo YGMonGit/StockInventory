@@ -8,11 +8,12 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using StockInventory.ViewModel;
+
 using System.Data;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 using ClosedXML.Excel;
-
 
 namespace StockInventory.Controllers
 {
@@ -60,7 +61,11 @@ namespace StockInventory.Controllers
 
         public IActionResult CreateSell()
         {
-            return View();
+            ProductAndSupplier obj = new ProductAndSupplier();
+            obj.Prodcut = _service2.GetAll();
+            obj.Supplier = _service4.GetAll();
+
+            return View(obj);
         }
 
         [HttpPost]
@@ -82,6 +87,9 @@ namespace StockInventory.Controllers
 
             var data = _service2.GetById(tran.Product.ProductId);
             data.Quantity -= transaction.SoldQuantity;
+
+            tran.Price = data.Price + ((data.Price*15)/100);
+            _service.Update(tran);
             _service2.Update(data);
 
 
@@ -90,7 +98,10 @@ namespace StockInventory.Controllers
 
         public IActionResult CreatePurchase()
         {
-            return View();
+            ProductAndSupplier obj = new ProductAndSupplier();
+            obj.Prodcut = _service2.GetAll();
+            obj.Supplier = _service4.GetAll();
+            return View(obj);
         }
 
         [HttpPost]
@@ -109,6 +120,7 @@ namespace StockInventory.Controllers
             Transaction tran = _service.GetById(transaction.TransactionId);
 
             var data = _service2.GetById(tran.Product.ProductId);
+            data.Price = transaction.Price;
             data.Quantity += transaction.PurchasedQuantity;
             _service2.Update(data);
 
@@ -121,6 +133,7 @@ namespace StockInventory.Controllers
         {
             var data = _service.GetById(id);
             if (data == null) return View("NotFound");
+
             if (data.PurchasedQuantity == 0)
             {
                 sorps = 1;

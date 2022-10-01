@@ -39,12 +39,12 @@ namespace StockInventory.Models.Services
             throw new System.NotImplementedException();
         }
 
-        public Supplier GetAll(long userid)
+        /*public Supplier GetAll(long userid)
         {
 
             var result = _context.Suppliers.Find(userid);
             return result;
-        }
+        }*/
 
         public List<Supplier> GetAll()
         {

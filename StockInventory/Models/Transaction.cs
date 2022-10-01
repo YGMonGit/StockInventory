@@ -9,6 +9,7 @@ namespace StockInventory.Models
         public long TransactionId { get; set; }
         public int PurchasedQuantity { get; set; }
         public int SoldQuantity { get; set; }
+        public double Price { get; set; }
         public DateTime? DateOfPurchase { get; set; }
         public long? ProductId { get; set; }
         public long? SupplierId { get; set; }
