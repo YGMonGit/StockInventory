@@ -27,7 +27,7 @@ namespace StockInventory.Models.Services
 
         public User FindId(String username, String password)
         {
-            var result = _context.Users.Where(x => x.UserName == username && x.Password == password).SingleOrDefault();
+            User result = _context.Users.Where(x => x.UserName == username && x.Password == password).SingleOrDefault();
             return result;
         }
 
