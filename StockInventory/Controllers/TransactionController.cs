@@ -8,6 +8,11 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
+using System.Data;
+using Microsoft.EntityFrameworkCore;
+using System.IO;
+using ClosedXML.Excel;
+
 
 namespace StockInventory.Controllers
 {
@@ -195,6 +200,58 @@ namespace StockInventory.Controllers
         {
             _service.Delete(transaction);
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public FileResult Export(string TrasactionSearch)
+        {
+            DataTable dt = new DataTable("Grid");
+            dt.Columns.AddRange(new DataColumn[5] { new DataColumn("Purchased Quantity"),
+                                          new DataColumn("Date Of Purchase"),
+                                          new DataColumn("Purchased Price"),
+                                            new DataColumn("Sold Quantity"),
+
+                                            new DataColumn(" Date Of Sold") ,
+                                          });
+            var data = _service.GetAll();
+            if (data != null)
+            {
+                if (String.IsNullOrEmpty(TrasactionSearch))
+                {
+                    foreach (var item in data)
+                    {
+                        dt.Rows.Add(item.PurchasedQuantity, item.DateOfPurchase,  item.SoldQuantity);
+                    }
+
+                }
+                else
+                {
+                    ViewData["GetTheData"] = TrasactionSearch;
+                    User loggedInUser = _service3.getLogInUser();
+                    var srcQuery = _context.Transactions.Include(log => log.User).Include(log => log.Product).Include(log => log.Supplier).Where(x => x.User.UserId == loggedInUser.UserId);
+                    if (!String.IsNullOrEmpty(TrasactionSearch))
+                    {
+                        srcQuery = srcQuery.Include(log => log.User).Include(log => log.Product).Include(log => log.Supplier).Where(x => x.Product.ProductName.Contains(TrasactionSearch));
+                    }
+
+                    foreach (var item in srcQuery)
+                    {
+                        dt.Rows.Add(item.PurchasedQuantity, item.DateOfPurchase, item.SoldQuantity);
+                    }
+
+                }
+            }
+
+
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(dt);
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    wb.SaveAs(stream);
+                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Transction.xlsx");
+                }
+            }
         }
     }
 }
