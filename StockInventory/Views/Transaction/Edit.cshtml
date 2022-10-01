@@ -22,12 +22,12 @@
               <form action="/Transaction/edit/@Model.TransactionId" method="post">
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label asp-for="ProductId">Product Id</label>
+                        <label asp-for="ProductId" class="formLabel">Product Id</label>
                         <input type="hidden" asp-for="TransactionId" value="@Model.TransactionId" />
                         <input type="text" asp-for="ProductId" class="form-control" placeholder="Product Id" value="@Model.ProductId">
                     </div>
                     <div class="form-group col-md-6">
-                        <label asp-for="SupplierId">Description</label>
+                        <label asp-for="SupplierId" class="formLabel"></label>
                         <input type="text" asp-for="SupplierId" class="form-control" placeholder="SupplierId" value="@Model.SupplierId">
                     </div>
                 </div>
@@ -37,13 +37,13 @@
                         {
                                 <input type="hidden" asp-for="PurchasedQuantity" class="form-control" placeholder="Purchased Quantity" value="@Model.PurchasedQuantity">
                             <div class="form-group col-md-6">
-                                <label asp-for="SoldQuantity">Sold Quantity</label>
+                                <label asp-for="SoldQuantity" class="formLabel">Sold Quantity</label>
                                 <input type="number" asp-for="SoldQuantity" class="form-control" placeholder="Sold Quantity" value="@Model.SoldQuantity">
                             </div>
                         }
                         if(Model.SoldQuantity == 0){
                             <div class="form-group col-md-6">
-                                <label asp-for="PurchasedQuantity"></label>
+                                <label asp-for="PurchasedQuantity" class="formLabel"></label>
                                 <input type="text" asp-for="PurchasedQuantity" class="form-control" placeholder="Purchased Quantity" value="@Model.PurchasedQuantity">
                             </div>
                                 <input type="hidden" asp-for="SoldQuantity" class="form-control" placeholder="Sold Quantity" value="@Model.SoldQuantity">

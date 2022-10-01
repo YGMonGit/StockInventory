@@ -25,7 +25,6 @@
                 <a href="/Transaction/CreatePurchase" class="btn btn-outline-success" style="margin-bottom:20px;">Add New Purchase</a>
             </div>
             
-
             <form method="get" asp-action="Index">
                 <p>
                     <input type="search" placeholder="Enter product name" value="@ViewData["GetTheData"]" name="ProductSearch" style="width:500px; display:inline;" class="form-control"/>
@@ -38,6 +37,7 @@
                 <tr>
                     <th>Transaction ID</th>
                     <th>Product Name</th>
+                    <th>Price</th>
                     <th>Purchased Quantity</th>
                     <th>Sold Quantity</th>
                     <th>Date</th>
@@ -51,9 +51,10 @@
                     <tr>
                         <td>@item.TransactionId</td>
                         <td>@item.Product.ProductName</td>
+                        <td>@item.Price</td>
                         <td>@item.PurchasedQuantity</td>
                         <td>@item.SoldQuantity</td>
-                        <td>@item.DateOfPurchase</td>
+                        <td style="inline-size: 150px; overflow: hidden;">@item.DateOfPurchase</td>
                         <td>@item.Supplier.CompanyName</td>
                         <td>
                             <a href="/Transaction/Details/@item.TransactionId" class=" btn btn-outline-info">Details</a>
