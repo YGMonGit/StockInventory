@@ -39,14 +39,14 @@ namespace StockInventory.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(string ProductSearch)
+        public async Task<IActionResult> Index(string TrasactionSearch)
         {
-            ViewData["GetTheData"] = ProductSearch;
+            ViewData["GetTheData"] = TrasactionSearch;
             User loggedInUser = _service3.getLogInUser();
             var srcQuery = _context.Transactions.Include(log => log.User).Include(log => log.Product).Include(log => log.Supplier).Where(x => x.User.UserId == loggedInUser.UserId);
-            if (!String.IsNullOrEmpty(ProductSearch))
+            if (!String.IsNullOrEmpty(TrasactionSearch))
             {
-                srcQuery = srcQuery.Include(log => log.User).Include(log => log.Product).Include(log => log.Supplier).Where(x => x.Product.ProductName.Contains(ProductSearch));
+                srcQuery = srcQuery.Include(log => log.User).Include(log => log.Product).Include(log => log.Supplier).Where(x => x.Product.ProductName.Contains(TrasactionSearch));
             }
             return View(await srcQuery.AsNoTracking().ToListAsync());
         }
@@ -218,6 +218,7 @@ namespace StockInventory.Controllers
         [HttpPost]
         public FileResult Export(string TrasactionSearch)
         {
+            ViewData["GetTheData"] = TrasactionSearch;
             DataTable dt = new DataTable("Grid");
             dt.Columns.AddRange(new DataColumn[5] { new DataColumn("Purchased Quantity"),
                                           new DataColumn("Date Of Purchase"),
@@ -233,7 +234,7 @@ namespace StockInventory.Controllers
                 {
                     foreach (var item in data)
                     {
-                        dt.Rows.Add(item.PurchasedQuantity, item.DateOfPurchase,  item.SoldQuantity);
+                        dt.Rows.Add(item.Product.ProductName,item.PurchasedQuantity, item.DateOfPurchase,  item.SoldQuantity,item.Supplier.CompanyName);
                     }
 
                 }
@@ -249,7 +250,7 @@ namespace StockInventory.Controllers
 
                     foreach (var item in srcQuery)
                     {
-                        dt.Rows.Add(item.PurchasedQuantity, item.DateOfPurchase, item.SoldQuantity);
+                        dt.Rows.Add(item.Product.ProductName, item.PurchasedQuantity, item.DateOfPurchase, item.SoldQuantity, item.Supplier.CompanyName);
                     }
 
                 }

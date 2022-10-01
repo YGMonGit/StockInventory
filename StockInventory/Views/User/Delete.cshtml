@@ -1,0 +1,88 @@
+﻿@model User
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+     ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutLIn.cshtml";
+}
+
+@section one{}
+
+}
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/user.css" />
+  <title>User Delete</title>
+</head>
+<body>
+
+       <div class="darkFilter"></div>
+          <div class="mainBord">
+            <h2>Delete User</h2>
+            <form action="/user/" method="">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <label for="FirstName">First Name</label>
+                        </td>
+                        <td>
+                            <input type="hidden" name="FirstName" value="@Model.FirstName" />
+                            @Model.FirstName
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>
+                            <label for="LastName">Last Name</label>
+                        </td>
+                        <td>
+                            <input type="hidden" name="LastName" value="@Model.LastName" />
+                            @Model.LastName
+                        </td>
+                    </tr>
+
+                     <tr>
+                        <td>
+                            <label for="PhoneNumber">Phone Number</label>
+                        </td>
+                        <td>
+                            <input type="hidden" name="PhoneNumber" value="@Model.PhoneNumber" />
+                            @Model.PhoneNumber
+                        </td>
+                    </tr>
+
+                     <tr>
+                        <td>
+                            <label for="UserName">UserName</label>
+                        </td>
+                        <td>
+                            <input type="hidden" name="UserName" value="@Model.UserName" />
+                            @Model.UserName
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>
+                            <label for="Password">Password</label>
+                        </td>
+                        <td>
+                            <input type="hidden" name="Password" value="@Model.Password" />
+                            @Model.Password
+                        </td>
+                    </tr>
+                   
+                </table>
+
+                <div>Are you sure to delete your account?</div>
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a class="btn btn-warning" href="/home/index">Cancel</a>
+            </form>
+          </div>
+  </div>
+</body>
+</html>

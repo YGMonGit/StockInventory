@@ -39,6 +39,7 @@ namespace StockInventory.Controllers
         public IActionResult Login()
         {
             User loggedInUser = _service3.getLogInUser();
+            
             if(loggedInUser == null)
             {
                 return View();
@@ -64,6 +65,47 @@ namespace StockInventory.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+
+
+        public IActionResult Edit()
+        {
+            User loggedInUser = _service3.getLogInUser();
+            long id = loggedInUser.UserId;
+            var data = _service.GetById(id);
+            if (data == null) return View("NotFound");
+
+            return View(data);
+        }
+
+       [HttpPost]
+        public IActionResult Edit(User user)
+        {
+            _service.Update(user);
+            return RedirectToAction("accountsetting", "Home");
+          
+        }
+
+
+        public IActionResult Delete()
+        {
+            User loggedInUser = _service3.getLogInUser();
+            long id = loggedInUser.UserId;
+            LoggedIn liUser = _service3.FindLiId(loggedInUser.UserId);
+            _service2.Delete(liUser);
+            var data = _service.GetById(id);
+            if (data == null) return View("NotFound");
+
+            return View(data);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(User user)
+        {
+            _service.Delete(user);
+            return RedirectToAction("accountsetting", "Home");
+
+        }
+
         //public IActionResult Login(String username, String password)
         //{
         //    User usersId = _service.FindId(username, password);

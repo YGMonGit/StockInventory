@@ -102,6 +102,7 @@ namespace StockInventory.Controllers
         [HttpPost]
         public FileResult Export(string ProductSearch)
         {
+            ViewData["GetTheData"] = ProductSearch;
             DataTable dt = new DataTable("Grid");
             dt.Columns.AddRange(new DataColumn[5] { new DataColumn("Product Id"),
                                             new DataColumn("Product Name"),
