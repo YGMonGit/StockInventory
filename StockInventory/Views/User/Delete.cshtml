@@ -1,0 +1,43 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutLIn.cshtml";
+}
+
+@section one{}
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/user.css" />
+  <title>Sign Up</title>
+</head>
+<body>
+  <div class="mainBox">
+      <div class="darkFilter"></div>
+          <div class="mainBord">
+            <h2>Delete Product</h2>
+            <form action="/user/delete/@Model.UserId" method="post">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <label for="UserName">Username</label>
+                        </td>
+                        <td>
+                            <input type="hidden" name="UserID" value="@Model.UserId" />
+                            @Model.UserName
+                        </td>
+                    </tr>
+                </table>
+
+                <div>Your account @Model.UserName is successfully Deleted.</div>
+                <button type="submit" class="btn btn-outline-success">Back to main Page</button>
+            </form>
+          </div>
+  </div>
+</body>
+</html>
