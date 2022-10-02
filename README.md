@@ -8,17 +8,12 @@ Problem statement
 The traditional method of tracking stock on paper or in Excel is time-consuming and fraught with data loss. The best approach is to utilize a system with a dependable database that is programmed to track stock inventory .
 
 Functional requirements
-●	Able to update ,delete and insert new stock and their price 
-●	Keep track of the date and amount of items sold and purchased
-●	Provide a reporting and analytics of company transaction 
-●	Able to register users 
+●	Able to update ,delete and insert new stock and their price, Keep track of the date and amount of items sold and purchased, Provide a reporting and analytics of company transaction, Able to register users 
 
 Non-functional requirements 
 ●	Notify user when the stock is nearly empty  
 
 Done By:
-●	Mekdelawit Mesfin…………………. VX9253
-●	Timaj Adib …………………………………. HQ2331
-●	Yesehak Getachew ……………….. JA5080
+●	Mekdelawit Mesfin-VX9253, Timaj Adib-HQ2331, Yesehak Getachew-JA5080
 
 
