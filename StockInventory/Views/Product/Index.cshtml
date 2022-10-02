@@ -53,22 +53,41 @@
                         </tr>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>@item.ProductId</td>
-                                <td>@item.ProductName</td>
-                                <td>@item.Description</td>
-                                <td>@item.Quantity</td>
-                                <td>@item.Price</td>
-                                <td>
-                                    <a href="/Product/Details/@item.ProductId" class=" btn btn-outline-info">Details</a>
-                                </td>
-                                <td>
-                                    <a href="/product/edit/@item.ProductId" class=" btn btn-outline-primary">Edit</a>
-                                </td>
-                                <td>
-                                    <a href="/product/delete/@item.ProductId" class=" btn btn-outline-danger">Delete</a>
-                                </td>
-                            </tr>
+                            if (item.Quantity <= 10) { 
+                                <tr style="color:red">
+                                    <td>@item.ProductId</td>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.Price</td>
+                                    <td>
+                                        <a href="/Product/Details/@item.ProductId" class=" btn btn-outline-info">Details</a>
+                                    </td>
+                                    <td>
+                                        <a href="/product/edit/@item.ProductId" class=" btn btn-outline-primary">Edit</a>
+                                    </td>
+                                    <td>
+                                        <a href="/product/delete/@item.ProductId" class=" btn btn-outline-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            }else{
+                                <tr>
+                                    <td>@item.ProductId</td>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.Price</td>
+                                    <td>
+                                        <a href="/Product/Details/@item.ProductId" class=" btn btn-outline-info">Details</a>
+                                    </td>
+                                    <td>
+                                        <a href="/product/edit/@item.ProductId" class=" btn btn-outline-primary">Edit</a>
+                                    </td>
+                                    <td>
+                                        <a href="/product/delete/@item.ProductId" class=" btn btn-outline-danger">Delete</a>
+                                    </td>
+                                </tr>
+                             }
                         }
                     </table>
                 </div>

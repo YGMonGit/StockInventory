@@ -41,17 +41,31 @@ namespace StockInventory.Controllers
         {
             User loggedInUser = _service.getLogInUser();
             //long id = loggedInUser.UserId;
+            if(loggedInUser == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View(loggedInUser);
         }
 
         public IActionResult AccountSetting()
         {
+            User loggedInUser = _service.getLogInUser();
+            if(loggedInUser == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
         public IActionResult LogOut()
         {
             User loggedInUser = _service.getLogInUser();
+            
+            if(loggedInUser == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             LoggedIn liUser = _service.FindLiId(loggedInUser.UserId);
             return View(liUser);
         }
