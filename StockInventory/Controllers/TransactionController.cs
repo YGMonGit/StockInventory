@@ -46,6 +46,7 @@ namespace StockInventory.Controllers
             var srcQuery = _context.Transactions.Include(log => log.User).Include(log => log.Product).Include(log => log.Supplier).Where(x => x.User.UserId == loggedInUser.UserId);
             if (!String.IsNullOrEmpty(ProductSearch))
             {
+                TempData["search"] = ProductSearch;
                 srcQuery = srcQuery.Include(log => log.User).Include(log => log.Product).Include(log => log.Supplier).Where(x => x.Product.ProductName.Contains(ProductSearch));
             }
             return View(await srcQuery.AsNoTracking().ToListAsync());
@@ -216,7 +217,7 @@ namespace StockInventory.Controllers
         }
 
         [HttpPost]
-        public FileResult Export(string TrasactionSearch)
+        public FileResult Export()
         {
             DataTable dt = new DataTable("Grid");
             dt.Columns.AddRange(new DataColumn[6] { new DataColumn("Product Name"),
@@ -228,18 +229,13 @@ namespace StockInventory.Controllers
                                           });
             var data = _service.GetAll();
             if (data != null)
-            {
-                if (String.IsNullOrEmpty(TrasactionSearch))
-                {
-                    foreach (var item in data)
-                    {
-                        dt.Rows.Add(item.Product.ProductName, item.Price,  item.PurchasedQuantity,item.SoldQuantity,item.DateOfPurchase,item.Supplier.CompanyName);
-                    }
 
-                }
-                else
+            {
+                var TrasactionSearch  = TempData["search"].ToString();
+                if (!String.IsNullOrEmpty(TrasactionSearch))
                 {
-                    ViewData["GetTheData"] = TrasactionSearch;
+
+                   
                     User loggedInUser = _service3.getLogInUser();
                     var srcQuery = _context.Transactions.Include(log => log.User).Include(log => log.Product).Include(log => log.Supplier).Where(x => x.User.UserId == loggedInUser.UserId);
                     if (!String.IsNullOrEmpty(TrasactionSearch))
@@ -253,7 +249,17 @@ namespace StockInventory.Controllers
                     }
 
                 }
-            }
+                else
+                {
+                    foreach (var item in data)
+                    {
+                        dt.Rows.Add(item.Product.ProductName, item.Price, item.PurchasedQuantity, item.SoldQuantity, item.DateOfPurchase, item.Supplier.CompanyName);
+                    }
+
+                }
+
+                }
+            
 
 
             using (XLWorkbook wb = new XLWorkbook())
