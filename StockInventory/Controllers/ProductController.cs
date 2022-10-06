@@ -42,6 +42,7 @@ namespace StockInventory.Controllers
             var srcQuery = _context.Products.Where(x => x.User.UserId == loggedInUser.UserId);
             if (!String.IsNullOrEmpty(ProductSearch))
             {
+                TempData["search"] = ProductSearch;
                 srcQuery = srcQuery.Where(x => x.ProductName.Contains(ProductSearch));
             }
             return View(await srcQuery.AsNoTracking().ToListAsync());
@@ -100,7 +101,7 @@ namespace StockInventory.Controllers
         }
 
         [HttpPost]
-        public FileResult Export(string ProductSearch)
+        public FileResult Export( )
         {
             DataTable dt = new DataTable("Grid");
             dt.Columns.AddRange(new DataColumn[5] { new DataColumn("Product Id"),
@@ -111,6 +112,7 @@ namespace StockInventory.Controllers
             var data = _service.GetAll();
             if (data != null)
             {
+               var ProductSearch = TempData["search"].ToString();
                 if (String.IsNullOrEmpty(ProductSearch) )
                 {
                     foreach (var item in data)
@@ -120,7 +122,7 @@ namespace StockInventory.Controllers
 
                 }else
                 {
-                    ViewData["GetTheData"] = ProductSearch;
+                   
                     User loggedInUser = _service3.getLogInUser();
                     var srcQuery = _context.Products.Where(x => x.User.UserId == loggedInUser.UserId);
 
