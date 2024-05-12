@@ -27,12 +27,9 @@ Non-functional requirements
 ●	Notify user when the stock is nearly empty 
 
 
-Done By:
-
-●	Mekdelawit Mesfin ---------- VX9253
-
-●	Timaj Adib ----------------- Q2331
-
-●	Yesehak Getachew ----------- JA5080
+##Done By:
+  Mekdelawit Mesfin
+  Timaj Adib
+  Yisehak Getachew
 
 
